@@ -124,7 +124,7 @@ static inline uint8_t alloc_hprintf_buffer(void){
 #ifdef __MINGW64__
 		hprintf_buffer = (uint8_t*)VirtualAlloc(0, HPRINTF_MAX_SIZE, MEM_COMMIT, PAGE_READWRITE);
 #else 
-		hprintf_buffer = mmap((void*)NULL, HPRINTF_MAX_SIZE, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+                hprintf_buffer = (uint8_t*)mmap((void*)NULL, HPRINTF_MAX_SIZE, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 #endif
 		if(!hprintf_buffer){
 			return 0;
